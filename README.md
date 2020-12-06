@@ -1,5 +1,7 @@
 # Fundo Louriceira
 
+Registo de dormidas na Louriceira para criação de um fundo de manutenção.
+
 ## Project setup
 ```
 npm install
