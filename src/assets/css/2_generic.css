@@ -1,0 +1,61 @@
+﻿html,
+body {
+    height: 100%;
+    font-size: 62.5%;
+}
+body {
+    overflow: hidden;
+}
+body,
+button,
+input,
+select {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: var(--font-size);
+}
+body,
+button,
+input,
+ul {
+    margin: 0;
+}
+p {
+    margin-top: 0;
+}
+button {
+    padding: 0;
+    border: none;
+    background: none;
+}
+
+a {
+    color: inherit;
+    fill: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .4rem;
+}
+
+select,
+input,
+button {
+    height: 4rem;
+}
+select,
+input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding-left: var(--gap-sm);
+    border: 1px solid var(--color-grey-300);
+    box-shadow: inset 0 0.0625em 0.125em rgba(10,10,10,.05);
+}
