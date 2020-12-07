@@ -31,7 +31,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
 .o-view {
     max-width: 32rem;
 }
