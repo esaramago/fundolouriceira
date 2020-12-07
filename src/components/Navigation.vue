@@ -25,7 +25,7 @@
     </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .c-navigation {
     position: fixed;
     top: 0;
