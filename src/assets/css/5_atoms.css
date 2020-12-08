@@ -8,14 +8,8 @@
     height: 2.4rem;
 }
 .a-button {
-    padding: 0 var(--gap-sm);
+    height: var(--input-height);
+    padding: 0 var(--gap);
     background-color: var(--color-main-500);
     color: #FFF;
-}
-
-.a-input--xs {
-    width: 8rem;
-}
-.a-input--sm {
-    width: 16.5rem;
 }

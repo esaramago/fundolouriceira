@@ -15,6 +15,9 @@ export default {
     components: {
         Header,
         Navigation
+    },
+    methods: {
+        
     }
 };
 </script>

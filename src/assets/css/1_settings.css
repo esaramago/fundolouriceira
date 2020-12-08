@@ -9,6 +9,8 @@
     --color-grey-300: #CCC;
     --color-grey-500: #747474;
 
+    --color-danger: #FF0000;
+
     /* Gaps */
     --gap: 2.4rem;
     --gap-sm: calc(var(--gap) / 2);
@@ -17,6 +19,7 @@
 
     /* Sizes */
     --header-height: 5.5rem;
+    --input-height: 4rem;
 
     /* Text */
     --font-size: 1.6rem;
