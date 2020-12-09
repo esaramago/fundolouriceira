@@ -12,7 +12,7 @@ const routes = [
     {
         path: "/historico",
         name: "Histórico",
-        component: () => import("../views/Historico.vue")
+        component: () => import("../views/Historico/Historico.vue")
     },
     {
         path: "/informacao",

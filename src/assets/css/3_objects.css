@@ -8,9 +8,11 @@
     overflow: auto;
     flex: 1;
     width: 100%;
+    padding: var(--gap);
+}
+.o-content {
     max-width: 65rem;
     margin: auto;
-    padding: var(--gap);
 }
 
 .o-stack {

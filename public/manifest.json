@@ -1,7 +1,9 @@
 ﻿{
     "name": "Fundo Louriceira",
-    "short_name": "FL",
+    "short_name": "FundoLouriceira",
     "theme_color": "#0077CC",
+    "lang": "pt",
+    "description": "Registo de dormidas na Louriceira para criação de um fundo de manutenção.",
     "icons": [
         {
             "src": "./img/icons/android-chrome-192x192.png",
@@ -28,5 +30,5 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#FFFFFF"
+    "background_color": "transparent"
 }

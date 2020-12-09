@@ -1,6 +1,7 @@
 {
   "rulesFile": "database.rules.json",
   "hosting": {
+    "site": "fundolouriceira",
     "public": "dist",
     "ignore": [
       "firebase.json",
