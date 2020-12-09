@@ -4,7 +4,7 @@
     </header>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .c-header {
     display: flex;
     align-items: center;

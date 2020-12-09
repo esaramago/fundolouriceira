@@ -25,41 +25,4 @@
     </nav>
 </template>
 
-<style lang="scss" scoped>
-.c-navigation {
-    position: fixed;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    height: var(--header-height);
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-align: center;
-    text-transform: uppercase;
-    a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        padding: 0 var(--gap);
-        opacity: 0.74;
-    }
-    .router-link-exact-active {
-        opacity: 1;
-    }
-}
-
-@media (max-width: 650px) {
-    .c-navigation {
-        top: auto;
-        bottom: 0;
-        left: 0;
-        box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.2);
-        a {
-            flex: 1;
-        }
-    }
-}
-</style>
+<style src="./Navigation.scss" lang="scss"></style>
