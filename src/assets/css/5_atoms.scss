@@ -3,10 +3,20 @@
     font-size: 2.5rem;
     font-weight: 500;
 }
+
 .a-icon {
     width: 2.4rem;
     height: 2.4rem;
 }
+button.a-icon {
+    box-sizing: content-box;
+    padding: .5rem;
+    fill: var(--color-main-500);
+}
+td > button.a-icon {
+    margin: -5px -8px;
+}
+
 .a-button {
     height: var(--input-height);
     padding: 0 var(--gap);

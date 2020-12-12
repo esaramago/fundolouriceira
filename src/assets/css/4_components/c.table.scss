@@ -1,0 +1,30 @@
+﻿.c-table {
+    --cell-padding-block: .7rem;
+    --cell-padding-inline: var(--gap-sm);
+    width: 100%;
+    border-bottom: 1px solid var(--color-grey-300);
+    th {
+        font-weight: 500;
+    }
+
+    tbody tr {
+        border-top: 1px solid var(--color-grey-300);
+    }
+    th,
+    td {
+        padding: var(--cell-padding-block) var(--cell-padding-inline);
+    }
+
+    @media (max-width: 500px) {
+        --cell-padding-inline: calc(.5rem);
+        font-size: var(--font-size--sm);
+    }
+    
+    /* tbody tr:nth-child(even) {
+        background-color: var(--color-grey-200);
+    } */
+}
+.c-table__col-auto {
+    width: 1px;
+    white-space: nowrap;
+}

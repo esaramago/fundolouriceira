@@ -1,11 +1,17 @@
 ﻿:root {
 
+    /* Text */
+    --font-size: 1.6rem;
+    --font-size--sm: 1.4rem;
+
     /* Colors */
     --color-main-500: #0077CC;
 
+    --color-grey-100: #FAFAFA;
     --color-grey-200: #eee;
     --color-grey-300: #CCC;
     --color-grey-500: #747474;
+    --color-default: rgba(0,0,0,.87);;
 
     --color-danger: #FF0000;
 
@@ -14,12 +20,13 @@
     --gap-sm: calc(var(--gap) / 2);
     --gap-xs: calc(var(--gap) / 4);
     --gap-lg: calc(var(--gap) * 1.5);
+    
+    @media (max-width: 500px) {
+        --gap: 1.6rem;
+    }
 
     /* Sizes */
     --header-height: 5.5rem;
     --input-height: 4rem;
-
-    /* Text */
-    --font-size: 1.6rem;
 
 }

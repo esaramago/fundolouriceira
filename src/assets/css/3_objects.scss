@@ -20,12 +20,13 @@
     flex-wrap: wrap;
     flex-direction: column;
     gap: var(--gap);
-}
-.o-stack.--inline {
-    flex-direction: row;
-}
-@media (max-width: 25rem) {
-    .o-stack.--inline {
-        flex-direction: column;
+    > * {
+        flex: 1;
+    }
+    &.--inline {
+        flex-direction: row;
+        @media (max-width: 25rem) {
+            flex-direction: column;
+        }
     }
 }

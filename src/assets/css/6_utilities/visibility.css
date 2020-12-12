@@ -1,0 +1,8 @@
+.is-hidden--small {
+    @media (max-width: 600px) {
+        display: none;
+    }
+}
+.v-cloak {
+    display: none;
+}

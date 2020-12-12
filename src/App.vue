@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="o-wrapper">
+    <div id="app" class="o-wrapper v-cloak">
         <Header />
         <main class="o-view">
             <router-view />
