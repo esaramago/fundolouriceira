@@ -2,7 +2,7 @@
     <div class="o-content">
         <div class="o-stack">
             <h2 class="a-title">Nova estadia</h2>
-            <NewStay />
+            <StayForm :stay="{}" :isnew="true" />
         </div>
     </div>
 </template>

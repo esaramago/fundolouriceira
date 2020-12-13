@@ -1,8 +1,8 @@
-﻿import NewStay from '../../components/NewStay/NewStay.vue';
+﻿import StayForm from '@/components/StayForm/StayForm.vue';
 
 export default {
     /* eslint-disable no-debugger */
     components: {
-        NewStay
+        StayForm
     },
 }

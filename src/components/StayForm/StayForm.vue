@@ -1,11 +1,11 @@
 <template>
-    <form class="o-stack" v-on:submit="addStay">
+    <form class="o-stack" v-on:submit="addStay" v-if="stay">
         <div class="c-form" v-bind:class="{'--has-error': responsibleError}">
             <label for="responsible">Hóspede responsável</label>
             <select
                 name="responsible"
                 id="responsible"
-                v-model="responsible"
+                v-model="stay.responsible"
                 v-on:change="removeErrorLabel"
             >
                 <option value="0" selected disabled>Seleciona</option>
@@ -19,7 +19,7 @@
                 type="number"
                 name="hosts"
                 id="hosts"
-                v-model="hosts"
+                v-model="stay.hosts"
                 min="1"
                 max="15"
                 placeholder="0"
@@ -34,7 +34,7 @@
                     <input
                         type="date"
                         name="startDate"
-                        v-model="startDate"
+                        v-model="stay.startDate"
                         id="startDate"
                         v-on:input="onChangeDate"
                     >
@@ -45,7 +45,7 @@
                     <input
                         type="date"
                         name="endDate"
-                        v-model="endDate"
+                        v-model="stay.endDate"
                         id="endDate"
                         v-on:input="onChangeDate"
                     >
@@ -56,8 +56,11 @@
         </div>
 
         <div>
-            <button class="a-button">Adicionar</button>
+            <button class="a-button">
+                <template v-if="isnew">Adicionar</template>
+                <template v-else>Gravar</template>
+            </button>
         </div>
     </form>
 </template>
-<script src="./NewStay.js"></script>
+<script src="./StayForm.js"></script>

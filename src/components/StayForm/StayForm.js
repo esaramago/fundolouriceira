@@ -1,18 +1,21 @@
-import { db } from '../../firebaseDatabase';
+import { db } from '@/firebaseDatabase';
 
 export default {
     /* eslint-disable no-debugger */
+    props: ['isnew'/* , 'stay' */],
     data() {
         return {
-            responsible: 0,
-            hosts: null,
-            startDate: null,
-            endDate: null,
             responsibleError: '',
             hostsError: '',
             startDateError: '',
             endDateError: '',
             datesError: false,
+            stay: {
+                responsible: 0,
+                hosts: null,
+                startDate: null,
+                endDate: null,
+            },
             responsibles: [
                 {
                     id: 0,
@@ -56,29 +59,29 @@ export default {
             e.preventDefault();
             let hasError = false;
 
-            if (!this.responsible) {
+            if (!this.stay.responsible) {
                 this.responsibleError = 'Seleciona o teu nome';
                 hasError = true;
             }
-            if (!this.hosts) {
+            if (!this.stay.hosts) {
                 this.hostsError = 'Indica o número total de hóspedes';
                 hasError = true;
             }
-            if (!this.startDate) {
+            if (!this.stay.startDate) {
                 this.startDateError = 'Indica a data de chegada';
                 hasError = true;
             }
-            if (!this.endDate) {
+            if (!this.stay.endDate) {
                 this.endDateError = 'Indica a data de partida';
                 hasError = true;
             }
 
             let startDate;
             let endDate;
-            if (this.startDate && this.endDate) {
+            if (this.stay.startDate && this.stay.endDate) {
 
-                startDate = new Date(this.startDate).getTime();
-                endDate = new Date(this.endDate).getTime();
+                startDate = new Date(this.stay.startDate).getTime();
+                endDate = new Date(this.stay.endDate).getTime();
 
                 if (startDate >= endDate) {
                     this.datesError = true;
@@ -90,19 +93,22 @@ export default {
 
                 const that = this;
 
-                db.collection('stays').add({
-                    responsible: this.responsibles.find(x => x.id == this.responsible),
-                    startDate: startDate,
-                    endDate: endDate,
-                    hosts: this.hosts,
-                    //  timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                }).catch(function (error) {
-                    console.error('Error writing new message to database', error);
-                })
+                if (that.isnew) {
+                    db.collection('stays').add(this.stay).catch(function (error) {
+                        console.error('Error writing new message to database', error);
+                    })
                     .then(snapshot => {
                         console.log(snapshot)
                         that.$router.push('historico');
+                        that.$emit('show-toastr', {
+                            message: 'Estadia adicionada com sucesso'
+                        });
                     });
+                }
+                else {
+                    that.$emit('stay-edited');
+                }
+
             }
         },
         onChangeDate(e) {

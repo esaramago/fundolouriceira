@@ -1,0 +1,36 @@
+.c-toastr {
+    position: fixed;
+    top: calc(var(--header-height) + 1rem);
+    right: 0;
+    left: 0;
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    color: #FFF;
+}
+.c-toastr__item {
+    position: relative;
+    padding: var(--gap-sm) var(--gap);
+    margin-bottom: var(--gap-xs);
+    border-radius: 2px;
+    background-color: rgb(var(--color-main-500-raw) / .9);
+    opacity: 0;
+    transition: opacity var(--toastr-duration);
+    &.is-visible {
+        opacity: 1;
+        transition: opacity var(--toastr-duration);
+    }
+    &.--error {
+        background-color: rgb(var(--color-danger-raw) / .9);
+    }
+}
+.c-toastr__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: content-box;
+    padding: .5rem;
+    width: 2rem;
+    height: 2rem;
+    fill: #FFF;
+}
