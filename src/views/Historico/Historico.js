@@ -76,6 +76,9 @@ export default {
                         message: 'Estadia removida com sucesso'
                     });
                     that.stays.splice(index, 1); // remove from table
+
+                    that.$storeAudit('delete', stay);
+
                 }).catch(function (error) {
                     that.$emit('show-toastr', {
                         message: 'Não foi possível remover a estadia',

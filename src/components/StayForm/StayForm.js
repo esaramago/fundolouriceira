@@ -102,6 +102,14 @@ export default {
                         that.$emit('show-toastr', {
                             message: 'Estadia adicionada com sucesso'
                         });
+
+                        that.$storeAudit('add', that.stay);
+                    }).catch(function (error) {
+                        that.$emit('show-toastr', {
+                            message: 'Não foi possível adicionar a estadia',
+                            type: 'error'
+                        });
+                        console.error(error);
                     });
                 }
                 else {
@@ -115,6 +123,14 @@ export default {
                         that.$emit('show-toastr', {
                             message: 'Estadia atualizada com sucesso'
                         });
+
+                        that.$storeAudit('update', that.stay);
+                    }).catch(function (error) {
+                        that.$emit('show-toastr', {
+                            message: 'Não foi possível atualizar a estadia',
+                            type: 'error'
+                        });
+                        console.error(error);
                     });
                 }
 
