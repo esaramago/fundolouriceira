@@ -3,7 +3,7 @@
         <div class="o-stack --sm">
             <h2 class="a-title">Informação</h2>
             <p>Este website serve para registar as dormidas na casa da Louriceira, para fazermos um balanço de contas.</p>
-            <p>Por cada noite, por pessoa, devemos contribuir com um preço simbólico de 5€.</p>
+            <p>Por cada noite, por pessoa, devemos contribuir com um valor simbólico de 5€.</p>
             <p>O objetivo é criar um fundo para fazer face às muitas despesas.</p>
             <div>
                 Despesas mais comuns:
