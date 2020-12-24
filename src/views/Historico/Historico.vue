@@ -41,6 +41,15 @@
                                 <td colspan="6">Não há registo de estadias.</td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td class="u-text-center">{{totals.nights}}</td>
+                                <td></td>
+                                <td class="u-text-right">{{totals.value}} €</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

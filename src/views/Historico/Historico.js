@@ -13,7 +13,8 @@ export default {
             isLoading: null,
             isEditing: false,
             editingStay: null,
-            stays: []
+            stays: [],
+            totals: {}
         }
     },
     created() {
@@ -32,12 +33,12 @@ export default {
                         if (stay.startDate) {
                             stay.startDateTime = new Date(stay.startDate)
                             stay.startDate = stay.startDateTime.toISOString().split('T')[0]; // set timepicker readable format
-                            stay.startDateStr = stay.startDateTime.toLocaleDateString() // formate date
+                            stay.startDateStr = stay.startDateTime.toLocaleDateString('pt-PT') // formate date
                         }
                         if (stay.endDate) {
                             stay.endDateTime = new Date(stay.endDate)
                             stay.endDate = stay.endDateTime.toISOString().split('T')[0]; // set timepicker readable format
-                            stay.endDateStr = stay.endDateTime.toLocaleDateString() // formate date
+                            stay.endDateStr = stay.endDateTime.toLocaleDateString('pt-PT') // formate date
                         }
 
                         if (stay.startDate && stay.endDate) {
@@ -56,8 +57,14 @@ export default {
                         return b.startDateTime - a.startDateTime;
                     });
 
+                    this.setTotals();
+
                     this.isLoading = false
                 })
+        },
+        setTotals() {
+            this.totals.nights = this.stays.reduce((accum, item) => accum + item.nights, 0) // calculate total of nights
+            this.totals.value = this.stays.reduce((accum, item) => accum + item.total, 0) // calculate total value
         },
         deleteStay(stay, index) {
             const that = this;

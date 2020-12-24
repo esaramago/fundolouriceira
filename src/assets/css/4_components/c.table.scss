@@ -15,6 +15,12 @@
         padding: var(--cell-padding-block) var(--cell-padding-inline);
     }
 
+    tfoot {
+        border-top: 2px solid var(--color-grey-500);
+        background-color: var(--color-grey-100);
+        font-weight: 600;
+    }
+
     @media (max-width: 500px) {
         --cell-padding-inline: calc(.5rem);
         font-size: var(--font-size--sm);
