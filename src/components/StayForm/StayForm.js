@@ -2,7 +2,20 @@ import { db } from '@/firebaseDatabase';
 
 export default {
     /* eslint-disable no-debugger */
-    props: ['isnew'/* , 'stay' */],
+    props: {
+        isnew: Boolean,
+        stay: {
+            type: Object,
+            default() {
+                return {
+                    responsible: '',
+                    hosts: null,
+                    startDate: null,
+                    endDate: null
+                }
+            }
+        }
+    },
     data() {
         return {
             responsibleError: '',
@@ -10,12 +23,6 @@ export default {
             startDateError: '',
             endDateError: '',
             datesError: false,
-            stay: {
-                responsible: 0,
-                hosts: null,
-                startDate: null,
-                endDate: null,
-            },
             responsibles: [
                 {
                     id: 0,
@@ -44,16 +51,6 @@ export default {
             ]
         }
     },
-    created() {
-        /* db.collection('responsibles').get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                    let item = doc.data();
-                    item.id = doc.id; // set id
-                    this.stays.push(item);
-                })
-            }) */
-    },
     methods: {
         addStay(e) {
             e.preventDefault();
@@ -63,6 +60,7 @@ export default {
                 this.responsibleError = 'Seleciona o teu nome';
                 hasError = true;
             }
+
             if (!this.stay.hosts) {
                 this.hostsError = 'Indica o número total de hóspedes';
                 hasError = true;
@@ -80,8 +78,8 @@ export default {
             let endDate;
             if (this.stay.startDate && this.stay.endDate) {
 
-                startDate = new Date(this.stay.startDate).getTime();
-                endDate = new Date(this.stay.endDate).getTime();
+                startDate = new Date(this.stay.startDate).getTime(); // save time date
+                endDate = new Date(this.stay.endDate).getTime(); // save time date
 
                 if (startDate >= endDate) {
                     this.datesError = true;
@@ -94,11 +92,12 @@ export default {
                 const that = this;
 
                 if (that.isnew) {
-                    db.collection('stays').add(this.stay).catch(function (error) {
+
+                    // Add new entry on DB
+                    db.collection(this.$stays).add(this.stay).catch(function (error) {
                         console.error('Error writing new message to database', error);
                     })
-                    .then(snapshot => {
-                        console.log(snapshot)
+                    .then(() => {
                         that.$router.push('historico');
                         that.$emit('show-toastr', {
                             message: 'Estadia adicionada com sucesso'
@@ -106,7 +105,17 @@ export default {
                     });
                 }
                 else {
-                    that.$emit('stay-edited');
+
+                    // Update entry on DB
+                    db.collection(this.$stays).doc(this.stay.id).update(this.stay).catch(function (error) {
+                        console.error('Error updating message to database', error);
+                    }).then(() => {
+
+                        that.$emit('stay-updated');
+                        that.$emit('show-toastr', {
+                            message: 'Estadia atualizada com sucesso'
+                        });
+                    });
                 }
 
             }

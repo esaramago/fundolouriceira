@@ -4,7 +4,12 @@ import "./registerServiceWorker";
 import router from "./router";
 import "./assets/css/main.scss";
 
-Vue.config.productionTip = false;
+// Database properties
+Vue.prototype.$stays = 'staysDev';
+if (process.env.NODE_ENV === 'production') {
+    Vue.prototype.$stays = 'stays';
+}
+
 
 new Vue({
     router,

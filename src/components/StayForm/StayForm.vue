@@ -8,8 +8,8 @@
                 v-model="stay.responsible"
                 v-on:change="removeErrorLabel"
             >
-                <option value="0" selected disabled>Seleciona</option>
-                <option v-for="responsible of responsibles" v-bind:value="responsible.id" :key="responsible['.key']">{{responsible.name}}</option>
+                <option value="" selected disabled>Seleciona</option>
+                <option v-for="responsible of responsibles" v-bind:value="responsible" :key="responsible['.key']">{{responsible.name}}</option>
             </select>
             <p class="c-form__error">{{responsibleError}}</p>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div>
             <div class="o-stack --inline">
-                <div class="c-form" v-bind:class="{'--has-error': startDateError}">
+                <div class="c-form" v-bind:class="{'--has-error': startDateError || datesError}">
                     <label for="startDate">Data de chegada</label>
                     <input
                         type="date"
@@ -40,7 +40,7 @@
                     >
                     <p class="c-form__error">{{startDateError}}</p>
                 </div>
-                <div class="c-form" v-bind:class="{'--has-error': endDateError}">
+                <div class="c-form" v-bind:class="{'--has-error': endDateError || datesError}">
                     <label for="endDate">Data de saída</label>
                     <input
                         type="date"

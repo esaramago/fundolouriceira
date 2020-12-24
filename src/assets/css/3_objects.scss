@@ -23,6 +23,9 @@
     > * {
         flex: 1;
     }
+    &.--sm {
+        gap: var(--gap-sm);
+    }
     &.--inline {
         flex-direction: row;
         @media (max-width: 25rem) {

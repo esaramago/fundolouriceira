@@ -22,28 +22,41 @@ export default {
     methods: {
         getStays() {
             this.isLoading = true
-            db.collection('stays').get()
+            db.collection(this.$stays).get()
                 .then(snapshot => {
                     snapshot.forEach(doc => {
                         let stay = doc.data()
 
                         stay.id = doc.id; // set id
 
-                        const startDate = new Date(doc.data().startDate)
-                        const endDate = new Date(doc.data().endDate)
-                        stay.startDate = startDate.toLocaleDateString() // formate date
-                        stay.endDate = endDate.toLocaleDateString() // formate date
+                        if (stay.startDate) {
+                            stay.startDateTime = new Date(stay.startDate)
+                            stay.startDate = stay.startDateTime.toISOString().split('T')[0]; // set timepicker readable format
+                            stay.startDateStr = stay.startDateTime.toLocaleDateString() // formate date
+                        }
+                        if (stay.endDate) {
+                            stay.endDateTime = new Date(stay.endDate)
+                            stay.endDate = stay.endDateTime.toISOString().split('T')[0]; // set timepicker readable format
+                            stay.endDateStr = stay.endDateTime.toLocaleDateString() // formate date
+                        }
 
-                        const oneDay = 24 * 60 * 60 * 1000;
-                        stay.nights = Math.round(Math.abs((startDate - endDate) / oneDay))
+                        if (stay.startDate && stay.endDate) {
+                            const oneDay = 24 * 60 * 60 * 1000;
+                            stay.nights = Math.round(Math.abs((stay.startDateTime - stay.endDateTime) / oneDay))
+                        }
 
                         const perNight = 5
                         stay.total = perNight * stay.nights * stay.hosts
 
                         this.stays.push(stay)
-
-                        this.isLoading = false
                     })
+
+                    // sort array by start date
+                    this.stays.sort(function (a, b) {
+                        return b.startDateTime - a.startDateTime;
+                    });
+
+                    this.isLoading = false
                 })
         },
         deleteStay(stay, index) {
@@ -51,7 +64,7 @@ export default {
             const id = stay.id;
             const confirmDelete = confirm('Queres mesmo apagar esta estadia?');
             if (confirmDelete) {
-                db.collection('stays').doc(id).delete().then(function () {
+                db.collection(this.$stays).doc(id).delete().then(function () {
                     that.$emit('show-toastr', {
                         message: 'Estadia removida com sucesso'
                     });
@@ -66,15 +79,17 @@ export default {
             }
         },
         openEditModal(stay) {
-            this.isEditing = true;
-            this.editingStay = stay;
+            this.isEditing = true
+            this.editingStay = stay
         },
         closeEditModal() {
-            this.isEditing = false;
+            this.isEditing = false
         },
         onSaveStay() {
-            this.closeEditModal();
-            this.getStays()
+            this.closeEditModal()
+            this.stays = [] // clear table
+            this.isLoading = true // show loading
+            this.getStays() // load stays
         }
     }
 }
