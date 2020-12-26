@@ -1,0 +1,12 @@
+﻿.a-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+button.a-icon {
+    box-sizing: content-box;
+    padding: .5rem;
+    fill: var(--color-main-500);
+}
+td > button.a-icon {
+    margin: -5px -8px;
+}

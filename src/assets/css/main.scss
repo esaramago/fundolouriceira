@@ -1,14 +1,22 @@
 @import "./1_variables.css";
 @import "./2_reset.css";
-@import "./3_objects.scss";
+
+// objects
+@import "./3_objects/objects.scss";
+@import "./3_objects/o.stack.scss";
 
 // components
 @import "./4_components/c.form.scss";
 @import "./4_components/c.table.scss";
 
-@import "./5_atoms.scss";
+// atoms
+@import "./5_atoms/a.icon.scss";
+@import "./5_atoms/a.button.scss";
+@import "./5_atoms/a.title.scss";
+@import "./5_atoms/a.text.scss";
 
 // utilities
 @import "./6_utilities/loading.scss";
+@import "./6_utilities/u.display.css";
 @import "./6_utilities/u.text.css";
 @import "./6_utilities/visibility.css";
