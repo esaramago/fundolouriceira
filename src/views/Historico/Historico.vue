@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <Dialog :isopen="isEditing" v-on:close-dialog="closeEditModal">
+        <Dialog :isopen="isEditing" v-on:close-dialog="closeEditModal" >
             <div class="o-stack">
                 <h2 class="a-title">Alterar estadia</h2>
                 <StayForm :stay="editingStay" v-on:stay-updated="onSaveStay" v-on="$listeners" />

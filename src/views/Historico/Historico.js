@@ -73,7 +73,8 @@ export default {
             if (confirmDelete) {
                 db.collection(this.$stays).doc(id).delete().then(function () {
                     that.$emit('show-toastr', {
-                        message: 'Estadia removida com sucesso'
+                        message: 'Estadia removida com sucesso',
+                        type: 'success'
                     });
                     that.stays.splice(index, 1); // remove from table
 

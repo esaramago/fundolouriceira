@@ -14,7 +14,7 @@
             <p class="c-form__error">{{responsibleError}}</p>
         </div>
         <div class="c-form --xs" v-bind:class="{'--has-error': hostsError}">
-            <label for="hosts">Total de hóspedes <span class="a-text-small u-display-block--small">Incluir hóspede responsável</span></label>
+            <label for="hosts">Total de hóspedes<br><span class="a-text-small">Incluir hóspede responsável</span></label>
             <input
                 type="number"
                 name="hosts"

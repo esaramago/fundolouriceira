@@ -1,12 +1,12 @@
 <template>
     <dialog class="c-dialog" :open="isopen">
         <div class="c-dialog__content">
-            <button type="button" class="c-dialog__close" v-on:click="close">
+            <slot></slot>
+            <button type="button" class="c-dialog__close" v-on:click="close" v-if="showclose">
                 <svg>
                     <use xlink:href="/img/sprite.svg#close"></use>
                 </svg>
             </button>
-            <slot></slot>
         </div>
     </dialog>
 </template>

@@ -1,4 +1,6 @@
 .a-button {
+    display: inline-flex;
+    align-items: center;
     height: var(--input-height);
     padding: 0 var(--gap);
     background-color: var(--color-main-500);

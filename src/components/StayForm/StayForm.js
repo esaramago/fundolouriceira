@@ -98,10 +98,7 @@ export default {
                         console.error('Error writing new message to database', error);
                     })
                     .then(() => {
-                        that.$router.push('historico');
-                        that.$emit('show-toastr', {
-                            message: 'Estadia adicionada com sucesso'
-                        });
+                        that.$emit('stay-added');
 
                         that.$storeAudit('add', that.stay);
                     }).catch(function (error) {
@@ -121,7 +118,8 @@ export default {
 
                         that.$emit('stay-updated');
                         that.$emit('show-toastr', {
-                            message: 'Estadia atualizada com sucesso'
+                            message: 'Estadia atualizada com sucesso',
+                            type: 'success'
                         });
 
                         that.$storeAudit('update', that.stay);
